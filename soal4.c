@@ -46,7 +46,6 @@ int main() {
         char str[20] = "";
         sprintf(str, "makanan_sehat%d.txt", i);
         strcat(dest, str);
-
         i++;
       }
     }
