@@ -32,8 +32,17 @@ Jawab:
 Catatan: Tidak boleh menggunakan crontab
 
   ### Source Code
+  
+  [Source Code Soal2.c](/soal2.c)
+  
   ### Jawab
-
+  Membuat program C untuk mendeteksi suatu file (elen.ku) dalam direktori /home/[user]/hatiku/elen.ku,Mengubah premission file bila Ownernya "www-data" dan Groupnya "www-data" menjadi 777. Dan mengatur daemon dengan waktu sleep 3 detik.
+  ### Penjelasan
+  1. Mengecek file elen.ku ada atau tidak dalam direktori ~/modul2/soal2/hatiku/
+  2. Mengecek Owner dan Group dari file "elen.ku"
+  3. Apabila Ownernya www-data dan Groupnya "www-data" maka ubah premission file "elen.ku" menjadi 777
+  4. Setelah itu file "elen.ku" akan terhapus
+  
 ## Soal 3
 3. Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”. 
 Buatlah program C yang dapat :
