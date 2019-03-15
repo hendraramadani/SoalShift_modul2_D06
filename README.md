@@ -5,6 +5,9 @@ Catatan : Tidak boleh menggunakan crontab.
 
 Jawab:
   ### Source Code:
+  
+  [Source Code Soal1.c](/soal1.c)
+  
   ### Penjelasan:
   1. membuat folder baru modul2
   2. memebuat folder baru "soal1" di dalam folder "modul2"
