@@ -40,8 +40,8 @@ Catatan: Tidak boleh menggunakan crontab
   ### Penjelasan
   1. Mengecek file elen.ku ada atau tidak dalam direktori ~/modul2/soal2/hatiku/
   2. Mengecek Owner dan Group dari file "elen.ku"
-  3. Apabila Ownernya www-data dan Groupnya "www-data" maka ubah premission file "elen.ku" menjadi 777
-  4. Setelah itu file "elen.ku" akan terhapus
+  3. Apabila Ownernya "www-data" dan Groupnya "www-data" maka ubah premission file "elen.ku" menjadi 777
+  4. Setelah itu file "elen.ku" akan dihapus
   
 ## Soal 3
 3. Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”. 
