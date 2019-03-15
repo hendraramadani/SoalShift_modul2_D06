@@ -70,7 +70,11 @@ Catatan:
     • Contoh nama file : makan_sehat1.txt, makan_sehat2.txt, dst
     
   ### Source Code
+   [Source Code Soal4.c](/soal4.c)
   ### Jawab
+  1. File "makan_enak.txt" di pindahkan/atau di copy ke Direktori /home/[user]/Documents/makanan
+  2. Membuat file makan_sehat#.txt jika waktu sekarang - waktu buka file terakhir <=30
+  3. Daemon Dijalankan selama 5 detik sekali pada rentang 0-30 detik dengan syarat memenuhi poin ke 2
   
 ## Soal 5
 5. Kerjakan poin a dan b di bawah:
