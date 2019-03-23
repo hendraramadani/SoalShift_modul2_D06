@@ -151,12 +151,13 @@ Catatan:
   3. Daemon Dijalankan selama 5 detik sekali pada rentang 0-30 detik dengan syarat memenuhi poin ke 2
   
   ### Penjelasan Kodingan
-  -menjadikan "now" variable waktu
+  -Menjadikan "now" variable waktu
   ```
   time_t now;
   time(&now);
   ```
-  -``rentang = difftime(now, info.st_atime);`` perintah untuk mencari selisih waktu dari waktu sekarang dengan waktu terakhir file dibuka
+  -Perintah untuk mencari selisih waktu dari waktu sekarang dengan waktu terakhir file dibuka
+  ```rentang = difftime(now, info.st_atime);``` 
   -Membuat file makan_sehat%d.txt secara increment saat file "makan_enak.txt" dibuka jika file terakhir dibuka kurang dari 30 detik
   ```
    if(rentang<=30){
