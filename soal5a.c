@@ -48,7 +48,7 @@ int main(){
     char dtime[20];
 
     while(1){
-        if(minute%15 == 0){
+        if(minute%30 == 0){
             minute = 0;
             time_t now = time(NULL);
             struct tm *sekarang = localtime(&now);
@@ -81,7 +81,7 @@ int main(){
         
         while((wait(&status)) > 0);
         kill(child, SIGKILL);
-        sleep(2);
+        sleep(60);
     }
     
     exit(EXIT_SUCCESS);
