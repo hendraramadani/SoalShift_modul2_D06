@@ -158,6 +158,7 @@ Catatan:
   ```
   -Perintah untuk mencari selisih waktu dari waktu sekarang dengan waktu terakhir file dibuka
   ```rentang = difftime(now, info.st_atime);``` 
+  
   -Membuat file makan_sehat%d.txt secara increment saat file "makan_enak.txt" dibuka jika file terakhir dibuka kurang dari 30 detik
   ```
    if(rentang<=30){
