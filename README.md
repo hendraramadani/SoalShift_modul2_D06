@@ -147,8 +147,11 @@ Catatan:
    
   ### Penjelasan
   1. File "makan_enak.txt" di pindahkan/atau di copy ke Direktori /home/[user]/Documents/makanan
-  2. Membuat file makan_sehat#.txt jika waktu sekarang - waktu buka file terakhir <=30
+  2. Membuat file makan_sehat#.txt jika waktu sekarang - waktu buka file "makan_enak.txt" terakhir <=30
   3. Daemon Dijalankan selama 5 detik sekali pada rentang 0-30 detik dengan syarat memenuhi poin ke 2
+  
+  ### Penjelasan Kodingan
+  -``rentang = difftime(now, info.st_atime);`` perintah untuk mencari selisih waktu dari waktu sekarang dengan waktu terakhir file dibuka
   
 ## Soal 5
 5. Kerjakan poin a dan b di bawah:
