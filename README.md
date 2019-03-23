@@ -190,3 +190,14 @@ NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan pr
     while ((wait(&status)) > 0);
     kill(child, SIGKILL);
   ```
+  
+  ###Soal5b
+ Menggunakan perintah "killall"/"/usr/bin/killall" untuk mengekill pid dengan nama "soal5a" 
+  ```
+  int main(){
+    char target[15] = {"soal5a"};
+    char *arg[3] = {"killall", target, NULL};
+    execv("/usr/bin/killall", arg);
+    return 0;
+  }
+  ```
