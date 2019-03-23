@@ -191,7 +191,7 @@ NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan pr
     kill(child, SIGKILL);
   ```
   
-  ###Soal5b
+  ### Soal5b
  Menggunakan perintah "killall"/"/usr/bin/killall" untuk mengekill pid dengan nama "soal5a" 
   ```
   int main(){
