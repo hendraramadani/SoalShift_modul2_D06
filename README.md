@@ -151,7 +151,27 @@ Catatan:
   3. Daemon Dijalankan selama 5 detik sekali pada rentang 0-30 detik dengan syarat memenuhi poin ke 2
   
   ### Penjelasan Kodingan
+  -menjadikan "now" variable waktu
+  ```
+  time_t now;
+  time(&now);
+  ```
   -``rentang = difftime(now, info.st_atime);`` perintah untuk mencari selisih waktu dari waktu sekarang dengan waktu terakhir file dibuka
+  -Membuat file makan_sehat%d.txt secara increment saat file "makan_enak.txt" dibuka jika file terakhir dibuka kurang dari 30 detik
+  ```
+   if(rentang<=30){
+     char path[150],str[20];
+     strcpy(path, "/home/azzamjiul/Documents/makanan/makan_sehat");
+     sprintf(str,"%d.txt",inc);
+     strcat(path,str);
+     FILE *baru;
+     baru = fopen(path,"w");
+     fclose(baru);
+     inc++;
+     
+     sleep(5);
+     }
+  ```
   
 ## Soal 5
 5. Kerjakan poin a dan b di bawah:
