@@ -5,17 +5,11 @@
 Catatan : Tidak boleh menggunakan crontab.
 
 Jawab:
+
   ### Source Code:
-  
-  [Source Code Soal1.c](/soal1.c)
+  [Source Code Soal1.c](/soal1prak.c)
   
   ### Penjelasan:
-  1. membuat folder baru modul2
-  2. memebuat folder baru "soal1" di dalam folder "modul2"
-  3. membaut folder baru "gamabar" di dalam folder "soal1"
-  4. membuat file c dengan nama "soal1.c"
-  
-  ### penjelasan algoritma
   1. memastikan direktori "/home/azzamjiul/modul2/" ada
   2. variabel "namaAsli" menyimpan direktori asal kemudian ditambahkan dengan nama file lalu disimpan di variabel "namaFile" dan ditambahi dengan nama file dengan menggunakan (nama folder)-> d_name
   3. memisahkan nama file dari ekstensi ".png" dengan fungsi strtok() dan menyimpan ekstensi file ke variable "ekstensi"
@@ -27,21 +21,70 @@ Jawab:
   9. menutup directory
   10. dijalankan tiap 45 detik
   
+  ### Penjelasan Kodingan:
+- ``DIR *dir``; adalah suatu variable dengan nama folder yang menggunakan tipe data DIR.Jika digunakan tanpa parameter, perintah ini dapat menampilkan daftar berkas-berkas dan subdirektori yang terdapat di dalam direktori aktif. Berkas ini memiliki satu parameter, yakni lokasi direktori di mana hendak menampilkan daftar isi direktori. 
+
+
+- ``struct dirent *asli``; Struct adalah tipe data bentukan yang berisi kumpulan variabel-variabel yang berada dalam satu nama yang sama dan memiliki kaitan satu sama lain. Berbeda dengan array hanya berupa kumpulan variabel yang bertipe data sama, struct bisa memiliki variabel-variabel yang bertipe data sama atau berbeda, bahkan bisa menyimpan variabel yang bertipe data array atau struct itu sendiri. Variabel-variabel yang menjadi anggota struct disebut dengan elemen struct.
+
+- ``directory=opendir ("/home/azzamjiul/modul2/")``;adalah fungsi untuk membuka direktori handle gambar yaitu direktori asal dan akan menjalankan perintah pada gambar yang akan di pindah akan membuka direktori pada home/isnaini/modul2.
+
+
+- ``while ((asli = readdir(dir)) != NULL)`` untuk mengecek isi dalam folder sehingga dapat menjalankan perintah selanjutnya.
+
+
+- ``namaFile=strtok(asli->d_name,".");'``; memotong nama gamabr hingga ditemukan karakter titik .
+
+
+- ``ekstrak=strtok(NULL,".");``; mengambil ekstensi dari gambar;
+
+
+- ``ganti_nama=strcmp(ekstrak,"png");`` ; membandingkan apakah ektensi sama dengan png.
+
+
+- ``strcat(namaFile,namaTambahan);``; menambahkan karakter pada suatu ekstensi yang berbasis .png
+
+- ``rename(namaAsli,namaBaru);``; mengganti nama awal menjadi nama terbaru hasil editan
+
+  
 ## Soal 2
 2. Pada suatu hari Kusuma dicampakkan oleh Elen karena Elen dimenangkan oleh orang lain. Semua kenangan tentang Elen berada pada file bernama “elen.ku” pada direktori “hatiku”. Karena sedih berkepanjangan, tugas kalian sebagai teman Kusuma adalah membantunya untuk menghapus semua kenangan tentang Elen dengan membuat program C yang bisa mendeteksi owner dan group dan menghapus file “elen.ku” setiap 3 detik dengan syarat ketika owner dan grupnya menjadi “www-data”. Ternyata kamu memiliki kendala karena permission pada file “elen.ku”. Jadi, ubahlah permissionnya menjadi 777. Setelah kenangan tentang Elen terhapus, maka Kusuma bisa move on.
 Catatan: Tidak boleh menggunakan crontab
 
+Jawab:
+
   ### Source Code
-  
   [Source Code Soal2.c](/soal2.c)
   
-  ### Jawab
-  Membuat program C untuk mendeteksi suatu file (elen.ku) dalam direktori /home/[user]/hatiku/elen.ku,Mengubah premission file bila Ownernya "www-data" dan Groupnya "www-data" menjadi 777. Dan mengatur daemon dengan waktu sleep 3 detik.
   ### Penjelasan
+  Membuat program C untuk mendeteksi suatu file (elen.ku) dalam direktori /home/[user]/hatiku/elen.ku,Mengubah premission file bila Ownernya "www-data" dan Groupnya "www-data" menjadi 777. Dan mengatur daemon dengan waktu sleep 3 detik.
+  
   1. Mengecek file elen.ku ada atau tidak dalam direktori ~/modul2/soal2/hatiku/
   2. Mengecek Owner dan Group dari file "elen.ku"
   3. Apabila Ownernya "www-data" dan Groupnya "www-data" maka ubah premission file "elen.ku" menjadi 777
   4. Setelah itu file "elen.ku" akan dihapus
+  
+  ### Penjelasan Kodingan
+
+- ``struct stat info`` (adalah perintah untuk menyimpan data yang kompleks berupa info dengan struktur data stat) 
+
+- ``char elenku[] = "/home/dani/modul2/soal2/hatiku/elen.ku";`` (array elenku untuk menyimpan file elen.ku) 
+
+- ``stat(elenku, &info)``; (menyimpan beberapa info dari file yang ditunjuk oleh array elenku)
+
+- ``struct passwd *usr = getpwuid(info.st_uid);`` (mendapatkan info owner fileelen.ku)
+
+- ``struct group *grp= getgrgid(info.st_gid);`` (mendapatkan info group file elen.ku)
+
+-  ``if(!strcmp(grp->gr_name, "www-data") && !strcmp(usr->pw_name, "www-data"))`` (mengecek apakah user dan group file elen.ku sama dengan 'www-data' atau tidak).
+ 
+-  ``chmod(elenku,i);`` (adalah suatu perintah untuk mengubah permission file elen.ku, chmod berfungsi untuk mengatur sebuah hak akses atau sebuah permission terhadap file/ directory kepada user yang dimana i = 0777.)
+ 
+ - ``remove(elenku)``(adalah suatu perintah untuk menghapus file yang disimpan di array elenku yang tidak lain adalah file elen.ku)
+ 
+ - ``sleep(3)``   (adalah sutau perintah delay selama 3 detik untuk menghapus file elen.ku)
+ 
+ - ``exit(EXIT_SUCCESS)`` (adalah suatu perintah jika program berhasil, maka akan melakukan perintah Exit)
   
 ## Soal 3
 3. Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”. 
@@ -55,8 +98,38 @@ Catatan:
   Pastikan file daftar.txt dapat diakses dari text editor
   
   ### Source Code
-  ### Jawab
-
+  [Source Code Soal2.c](/soal3prak.c)
+  
+  ### Penjelasan
+  1. membuat proses anak pertama untuk melakukan proses unzip
+  2. melakukan proses unzip
+  3. membuat proses anak kedua untuk melakukan proses ls
+  4. melakukan proses ls dan menyimpan hasil ls
+  5. membuat proses anak ketiga untuk melakukan proses grep
+  6. melakukan proses grep dan menyimpn hasilnya
+  7. kembali ke proses parent setelah ketiga prose anak selesai
+  8. melakukan penyimpanan hasil grep ke dalam filr "daftar.txt"
+  
+  ### Penjelasan Kodingan
+  
+ -   ``pipe(pipes);`` (adalah perintah untuk membuat pipe) 
+        	
+ -   ``pipe(pipes+2);`` (adalah perintah untuk menambah pipe)
+   
+ -   ``execl("/usr/bin/unzip","unzip", "campur2.zip", NULL)`` (adalah perintah untuk mengekstrak file campur2.zip)
+   
+ -   ``dup2(pipes[1], STDOUT_FILENO);`` (adalah perintah untuk menyimpan hasil ls yang dijalankan dan nantinya akan diduplikasi dengan menggunakan perintah dup2)
+   
+ -   ``dup2(pipes[0],STDIN_FILENO);``(adalah perintah untuk membaca hasil ls yang dijalankan dan nantinya akan diduplikasi dengan menggunakan perintah dup2)
+  
+ -  ``close(pipes[1]);`` (setiap perintah dup2 perlu close untuk dapat dihentikan)
+  
+ -  `` int print = read(pipes[2],hasil,sizeof(hasil));`` (adalah perintah untuk mengambil hasil grep)
+   
+ -  ``file = fopen("daftar.txt","w+");`` (adalah perintah yang akan membuka file daftar.txt)
+   
+ -   ``printf("Daftar nama file yang berformat .txt :\n%.*s\n",print,hasil);`` (adalah perintah untuk memasukkan hasil ls grep ke dalam file)
+ 
 ## Soal 4
 4. Dalam direktori /home/[user]/Documents/makanan terdapat file makan_enak.txt yang berisikan daftar makanan terkenal di Surabaya. Elen sedang melakukan diet dan seringkali tergiur untuk membaca isi makan_enak.txt karena ngidam makanan enak. Sebagai teman yang baik, Anda membantu Elen dengan membuat program C yang berjalan setiap 5 detik untuk memeriksa apakah file makan_enak.txt pernah dibuka setidaknya 30 detik yang lalu (rentang 0 - 30 detik).
 Jika file itu pernah dibuka, program Anda akan membuat 1 file makan_sehat#.txt di direktori /home/[user]/Documents/makanan dengan '#' berisi bilangan bulat dari 1 sampai tak hingga untuk mengingatkan Elen agar berdiet.
