@@ -168,13 +168,25 @@ NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan pr
   [Source Code Soal5b.c](/soal5b.c)
   
   ### Penjelasan
-  ###Soal 5a
+  ### Soal 5a
   Berfungsi untuk membuat file setiap 30 menit :
-  ``
-  while(1) {\n
-  if(minute%30 == 0){\n
-    time_t now = time(NULL);\n
-    struct tm *p = localtime(&now);\n
-    strftime(dtime, sizeof(dtime)-1, "%Y:%m:%d-%H:%M", p);\n
+  ```
+  while(1) {
+  if(minute%30 == 0){
+    time_t now = time(NULL);
+    struct tm *p = localtime(&now);
+    strftime(dtime, sizeof(dtime)-1, "%Y:%m:%d-%H:%M", p);
   }
-  ``
+  ```
+  Berfungsi untuk membuat parent
+  ```
+    child = fork();
+    if(child == 0){
+      char cmd[200];
+      sprintf(cmd, "%s/%s", dir, dtime);
+      char *arg[4] = {"mkdir", "-p" ,cmd, NULL};
+      execv("/bin/mkdir", arg);// perintah untuk membuat folder
+    }
+    while ((wait(&status)) > 0);
+    kill(child, SIGKILL);
+  ```
