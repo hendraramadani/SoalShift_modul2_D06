@@ -164,7 +164,17 @@ Catatan:
 NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan program.
 
   ### Source Code
-  [Source Code Soal5a.c](/soalprak5a.c)
-  [Source Code Soal5b.c](/soalprak5b.c)
+  [Source Code Soal5a.c](/soal5a.c)
+  [Source Code Soal5b.c](/soal5b.c)
   
-  ### Jawab
+  ### Penjelasan
+  #Soal 5a
+  Berfungsi untuk membuat file setiap 30 menit :
+  ``
+  while(1) {
+  if(minute%30 == 0){
+    time_t now = time(NULL);
+    struct tm *p = localtime(&now);
+    strftime(dtime, sizeof(dtime)-1, "%Y:%m:%d-%H:%M", p);
+  }
+  ``
