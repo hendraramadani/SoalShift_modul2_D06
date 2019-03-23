@@ -57,7 +57,7 @@ int main() {
             ekstrak=strtok(NULL,".");
 
             if(ekstrak!=NULL){
-                ganti_nama=strcmp(ekstrak,"jpeg");
+                ganti_nama=strcmp(ekstrak,"png");
 
                 if(ganti_nama==0){
                     strcpy(namaBaru,dest);
